@@ -30,3 +30,12 @@
 *.vrb
 *.xdy
 *.tdo
+*.make
+*.swp
+*.swo
+*.d
+*.fls
+*.temp
+*.cookie
+
+sem-report.pdf
