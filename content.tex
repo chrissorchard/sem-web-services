@@ -81,14 +81,61 @@ of the service(cite). A 2005 W3C workshop on semantic web services concluded tha
 possible cause of the lack of adoption (and lack of progress towards
 standardisation) of these technologies(cite). 
 
-
 \section{Annotation: A Lightweight Approach}
 
 Given the issues with the heavyweight semantic web service frameworks, the W3C
 started work on a more lightweight approach to semantic web services. Based on
 the WSDL-S submission that proposes creating semantic web services by annotating
 WSDL files, Semantic Annotations for WSDL and XML Schema (SAWSDL) became a W3C
-recommendation in 2007.  
+recommendation in 2007. SAWSDL does not specify an ontology for describing the
+web services it annotates, but provides the \verb=modelReference= annotation that allows the
+implementer to pick an ontology such as those used as a part of  WSMO or OWL-S.
+Data transformation is
+provided by the \verb=liftingSchemaMapping= and \verb=loweringSchemaMapping=
+annotations that specify how to transform the XML used in the web service to
+RDF and back. Martin et al. write that from an OWL-S viewpoint SAWSDL is not an
+ideal solution to semantic web services and that it is rather poorly defined
+in terms of specifying descriptions of web services, however they also find that
+SAWSDL can be integrated with OWL-S descriptions(cite).
+
+%TODO some fixing due to chronology issues, also mention microWSMO
+More recently, the RESTful approach to web services has become more popular, and
+developments in semantic web services have reflected this. The annotation
+approach is much more suited to RESTful web services, as they do not typically
+have a contracted specification like a WSDL, so any description or documentation
+of their functionality is typically in HTML(cite). SA-REST, submitted to the W3C
+in 2010, lays the foundations for RESTful semantic web services by defining a
+set of annotations that can be embedded in a web page using GRDDL or RDFa(cite).
+Like SAWSDL, SA-REST does not specify any specific mechanisms for modelling the
+functionality of web services. A number of other microformats have been
+suggested a solution for modelling RESTful web services, such as
+hRESTS. See here for to fix this section: \cite{maleshkova_adapting_2009}.
+
+Whilst many in the research community view the loosely defined annotation based approach
+to semantic web services typified by SAWSDL and its RESTful derivatives to be
+unhelpful towards the goal of the wide-spread use of fully semantically
+described web services allowing automated discovery, execution and composition
+of services(cite), the principles and requirements of SAWSDL are much simpler
+than those of OWL-S and WSMO(cite). With the widespread popularity of RESTful
+web services, in part due to their simplicity(cite), reducing the complexity of
+implementing semantic web services should be a priority, a view shared by
+(cite) who (do some things). 
 
 \section{Conclusions and Future Developments}
+
+Semantic web services have developed significantly since their inception, but it
+is debatable whether they have yet progressed to the state where it is possible
+to use a semantic client to automatically discover, compose, and execute web
+services using semantic descriptions. Whilst the release of SAWSDL as a W3C
+standard is definite progress in the field of semantic web services, it lacks
+many of the features initially envisioned by the creator of the DAML-S and WSMO
+technologies. However, since these technologies were created, the way in which
+web services are defined and used on the web has changed significantly, with a
+major shift towards RESTful web services. New models such as SA-REST and
+MircoWSMO have emerged to cater for this trend, but it remains to be seen where
+semantic web services will move forward from here, a movement back towards more
+fully described and specified semantic web services now seem unlikely though,
+and it seems that the future lays in the adoption of RESTful semantic web
+services, of which there may be some hope, given the recent success of
+technologies such as Open Graph Protocl(cite) based on RDFa.
 
