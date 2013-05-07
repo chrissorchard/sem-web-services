@@ -1,8 +1,9 @@
 \section{Introduction}
 
-Web Services are a class of software for interaction between machines over the
-web, using web technologies such as HTTP and XML and known design patterns and
-frameworks to create systems that allow interoperability and reuse. There exist
+Web services are software entities that allow programmatic interaction between
+hosts on the web, using technologies such as HTTP and XML and known design patterns and
+frameworks to create systems that are interoperable and reusable. There
+exists
 two approaches to web services that are currently in widespread use: those based
 on a pair W3C standards called Web Service Description Language (WSDL) and the
 Simple Object Access Protocol (SOAP), and those based on the 
@@ -11,30 +12,33 @@ Fielding alongside the HTTP standard. Web services that use the REST design
 principles are said to be RESTful.
 
 Semantic web services are an extension of the concept of web services that
-attempt to overcome one of the major shortcomings of regular web services, that
-is, whilst in WSDL based web services the syntactics of the web service are well
-defined, the operations and their arguments and message formats, but there is
-little to no semantic data, something that means that the integration and
+attempt to overcome one of the major shortcomings of regular web services;
+whilst in WSDL based web services the syntactics of the web service are well
+defined, the operations and their arguments and message formats, there is
+little to no semantic data meaning that the integration and
 composition of different web services to create a more complex service must be
-carried out by hand. A similar problem exists with RESTful web services, but is
+carried out by hand. A similar problem exists with RESTful web services but is
 compounded by a general lack of syntactic specification. Semantic web services
-aim to describe the semantics of the operation of the underlying/contained  web
+aim to describe the semantics of the operation of the underlying/contained web
 service in a manner in which can be reasoned on, and as such automate the
-composition and execution of complex web services(cite).
+composition and execution of complex web services\cite{mcilraith_semantic_2001}.
 
-Semantic web services evolved from the efforts into developing WSDL and SOAP
-based web services by the W3C, and only later began to cater for RESTful web
-services as the REST paradigm became a popular option for implementing web APIs.
-This report attempts to collect the latest developments in semantic web services
-of both styles, and then compare these approaches to explore where semantic web
-services might fit into the future of web services.
+Within semantic web services, two different approaches have emerged for
+semantically describing web services. The first involves describing the entire
+web service and modelling its functionality in using a rules language, allowing
+for completely automated composition and execution of web services. The second
+is a more lightweight approach that developed after it became apparent that the
+more involved approach was not being widely adopted\cite{battle_report_????},
+and is based on annotating web service descriptions with semantic information,
+whilst still allowing for functional description of the web
+service\cite{kopecky_sawsdl:_2007}.
 
 \section{A Traditional Approach}
 
 One of the first efforts to try and apply principles of the semantic web to web
 services was DAML-S, first released in 2001. DAML-S was developed with the
 intention of creating a markup language capable of describing all of the facets
-of a web service, enabling automated discovery, composition and execution of a
+of a web service enabling automated discovery, composition and execution of a
 web service. McIlraith et al. illustrate this principle by building an agent in
 a variant of prolog that can perform automated service composition to build a
 travel booking agent\cite{mcilraith_semantic_2001}. DAML-S was developed into
@@ -47,16 +51,17 @@ An alternative semantic web services framework is the Web Service Modelling
 Ontology (WSMO) submitted to the W3C in 2005, that takes roughly the same
 approach as OWL-S, but focuses on the mediation of data and concepts between
 web services, translating between the ontologies, web service descriptions, and
-user constraints that make up WSMO. WSMO can be expresses using the Web Service
-Modelling Language, developed specifically to express the concepts in WSMO and
+user constraints that make up WSMO. WSMO can be expressed using the Web Service
+Modelling Language (WSML), developed specifically to express the concepts in WSMO and
 provide a framework for the formal logical description of a service. An
 execution environment (WSMX) also exists as a reference implementation of WSML,
 capable of automatic composition and execution.
 
 When OWL-S and WSMO were created, WSDLs were the principal way to implement web
 services, and both frameworks were designed to allow integration with WSDL based
-web services(cite?). The process of translating between the semantics defined
-in OWL-S or WSMO and the syntactics of WSDLs is known as grounding(cite). In
+web services\cite{martin_bringing_2007-1}\cite{roman_web_2005}. 
+The process of translating between the semantics defined
+in OWL-S or WSMO and the syntactics of WSDLs is known as grounding. In
 OWL-S and WSMO, WSDLs are linked into the semantic descriptions as extra
 properties on the semantic web service. There are two types of grounding
 required, one for converting between the semantically described data being
@@ -64,22 +69,20 @@ exchanged, and one to convert the description of the behaviour of the service to
 its interfaces. Kopecky et al. explore the grounding mechanisms of both OWL-S
 and WSMO and find that whilst data grounding is fairly straightforward, the
 behavioural grounding is very complex in the case of WSMO, and whilst simpler in
-OWL-S, still requires the use of AI techniques(cite).
+OWL-S, still requires the use of AI techniques\cite{kopecky_semantic_2006}.
 
-%TODO: this paragraph is wrong and needs fixing
-It is useful to re-state the goals of semantic web services, that is to add
+It is useful to re-state the original goals of semantic web services, that is to add
 semantic descriptions to web services to allow automatic discovery, execution
-and composition of services. Whilst the above technologies achieve this, they do
-so by creating all-encompassing frameworks, and whilst it is supposedly
-possible to build semantic web services in this fashion around existing web
-services(cite), building ontologies and logic that accurately models the entire
-service is an activity which may involve significant effort. This also runs
-against the "contract first" design principles of WSDL web services, intended to
-improve the interoperability of web services by first specifying the interface
-of the service(cite). A 2005 W3C workshop on semantic web services concluded that the
-"ambitious, comprehensive vision pursued by many research efforts" were a
-possible cause of the lack of adoption (and lack of progress towards
-standardisation) of these technologies(cite). 
+and composition of services. Whilst the above technologies are capable of
+achieving this, they do so by describing the operation of the web service in
+full using a rule language. The formal modelling of programs was identified as an area of
+ongoing research in a 2005 W3C workshop on semantic web services, and the
+workshop concludes that this has contributed to the poor adoption of these 
+technologies\cite{battle_report_????}. To define a more achievable goal 
+the workshop recommends a compromise to
+allow work on using semantic web services for discovery and composition of web
+services to be standardised whilst allowing for continued research into using
+rule languages for automated composition and execution.
 
 \section{Annotation: A Lightweight Approach}
 
@@ -96,7 +99,7 @@ annotations that specify how to transform the XML used in the web service to
 RDF and back. Martin et al. write that from an OWL-S viewpoint SAWSDL is not an
 ideal solution to semantic web services and that it is rather poorly defined
 in terms of specifying descriptions of web services, however they also find that
-SAWSDL can be integrated with OWL-S descriptions(cite).
+SAWSDL can be integrated with OWL-S descriptions\cite{martin_bringing_2007}.
 
 %TODO some fixing due to chronology issues, also mention microWSMO
 More recently, the RESTful approach to web services has become more popular, and
@@ -115,8 +118,8 @@ Whilst many in the research community view the loosely defined annotation based 
 to semantic web services typified by SAWSDL and its RESTful derivatives to be
 unhelpful towards the goal of the wide-spread use of fully semantically
 described web services allowing automated discovery, execution and composition
-of services(cite), the principles and requirements of SAWSDL are much simpler
-than those of OWL-S and WSMO(cite). With the widespread popularity of RESTful
+of services\cite{battle_report_???}, the principles and requirements of SAWSDL are much simpler
+than those of OWL-S and WSMO\cite{kopecky_sawsdl:_2007}. With the widespread popularity of RESTful
 web services, in part due to their simplicity(cite), reducing the complexity of
 implementing semantic web services should be a priority, a view shared by
 (cite) who (do some things). 
