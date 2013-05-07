@@ -86,9 +86,10 @@ rule languages for automated composition and execution.
 
 \section{Annotation: A Lightweight Approach}
 
-Given the issues with the heavyweight semantic web service frameworks, the W3C
+Having found some limitations with the usability of the fully featured semantic
+web services, the W3C
 started work on a more lightweight approach to semantic web services. Based on
-the WSDL-S submission that proposes creating semantic web services by annotating
+the WSDL-S submission that proposed creating semantic web services by annotating
 WSDL files, Semantic Annotations for WSDL and XML Schema (SAWSDL) became a W3C
 recommendation in 2007. SAWSDL does not specify an ontology for describing the
 web services it annotates, but provides the \verb=modelReference= annotation that allows the
@@ -101,31 +102,38 @@ ideal solution to semantic web services and that it is rather poorly defined
 in terms of specifying descriptions of web services, however they also find that
 SAWSDL can be integrated with OWL-S descriptions\cite{martin_bringing_2007}.
 
-%TODO some fixing due to chronology issues, also mention microWSMO
-More recently, the RESTful approach to web services has become more popular, and
+Recently, the RESTful approach to web services has become more popular and
 developments in semantic web services have reflected this. The annotation
 approach is much more suited to RESTful web services, as they do not typically
 have a contracted specification like a WSDL, so any description or documentation
-of their functionality is typically in HTML(cite). SA-REST, submitted to the W3C
-in 2010, lays the foundations for RESTful semantic web services by defining a
-set of annotations that can be embedded in a web page using GRDDL or RDFa(cite).
-Like SAWSDL, SA-REST does not specify any specific mechanisms for modelling the
-functionality of web services. A number of other microformats have been
-suggested a solution for modelling RESTful web services, such as
-hRESTS. See here for to fix this section: \cite{maleshkova_adapting_2009}.
+of their functionality is typically in HTML\cite{kopecky_hrests:_2008}. To
+annotate the HTML documentation with the semantic description of the web
+service Kopeky et al. propose hRESTS, a
+microformat\footnote[1]{microformats.org} for describing RESTful web service\cite{kopecky_hrests:_2008}.
+hRESTS describes the web service in a manner similar to a WSDL, with
+classifications for service, operations, and messages. 
+SA-REST, submitted to the W3C in 2010, builds upon this by providing semantic
+annotations in the style of SAWSDL to allow lifting and lowering, and to allow
+the addition of OWL-S or WSMO functional descriptions\cite{lathem_sa-rest_2007}.
+SA-REST also supports the use of RDFa and GRDDL as annotation
+formats\cite{sheth_semantics_2008}.
 
-Whilst many in the research community view the loosely defined annotation based approach
-to semantic web services typified by SAWSDL and its RESTful derivatives to be
-unhelpful towards the goal of the wide-spread use of fully semantically
-described web services allowing automated discovery, execution and composition
-of services\cite{battle_report_???}, the principles and requirements of SAWSDL are much simpler
-than those of OWL-S and WSMO\cite{kopecky_sawsdl:_2007}. With the widespread popularity of RESTful
-web services, in part due to their simplicity(cite), reducing the complexity of
-implementing semantic web services should be a priority, a view shared by
-(cite) who (do some things). 
+Whilst some in the research community view the loosely defined annotation based approach
+to semantic web services typified by SAWSDL and its RESTful derivatives as
+much weaker than is necessary to achieve the goals of semantic web services
+\cite{martin_bringing_2007}, others are moving in different direction, towards a
+level of semantic description that is intended to allow web developers to easily discover
+and combine web services to produce new services, without requiring any in-depth
+knowledge of topics such as rule languages \cite{kopecky_hrests:_2008}\cite{lathem_sa-rest_2007}
+\cite{sheth_semantics_2008}. 
+
+%Both SAWSDL and SA-REST reduce the barrier to entry
+%of creating semantic web services from the level of knowledge required to model
+%services in WSMO or OWL-S\cite{}.
 
 \section{Conclusions and Future Developments}
 
+%re-write to reflect change in needs of SWS
 Semantic web services have developed significantly since their inception, but it
 is debatable whether they have yet progressed to the state where it is possible
 to use a semantic client to automatically discover, compose, and execute web
